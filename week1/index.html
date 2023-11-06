@@ -9,22 +9,27 @@
     <div class="content">
         <div class="header">
             <h1 class="header__title">Todo List</h1>
-            <input 
-            class="header__input" 
-            required 
-            maxlength="200"
-            type="text" 
-            placeholder="Add new task"
-            />
+            <form class="header__input-form" >
+                <input 
+                required 
+                maxlength="200"
+                type="text" 
+                placeholder="Add new task"
+                />
+            </form>
+            
         </div>
         <div class="todo">
             <h2 class="todo__title">Todo</h2>
+            <ul class="todo__list"></ul>
         </div>
         <div class="done">
             <h2 class="done__title">Done</h2>
         </div>
     </div>
 
+    <script src="https://kit.fontawesome.com/a31773844f.js" crossorigin="anonymous"></script>
     <script src="js/todo.js"></script>
+    
 </body>
 </html>
