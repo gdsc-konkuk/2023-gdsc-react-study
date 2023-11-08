@@ -10,6 +10,13 @@ const TODOS_KET = "TODOS"; //
 
 let todos = [];
 
+/*전체를 바꾸자'
+draw함수가 있고 새로운 변화가 생길떄마다 새로그려주는 방식으로 바꾸자
+todo/done  베열 2개
+todo->done  배열을 옮기고 그려주기
+done -> todo 
+*/
+
 const saveTodos = () => {
     localStorage.setItem(TODOS_KET, JSON.stringify(todos));
 }
@@ -23,11 +30,26 @@ function deleteTodo(event){
     saveTodos();
 }
 
+function doneToTodo(event){
+    event.preventDefault();
+    const thisLi = this.closest("li");
+    thisLi.classList.remove("middle-line");
+    thisLi.remove();
+    todoList.appendChild(thisLi);
+    const todoListLi = document.querySelector(".todo__list span");
+    todoListLi.addEventListener("click", doneTodo);
+    saveTodos();
+
+}
+
 function doneTodo(event){
     event.preventDefault();
-    const thisLi = this.closest("li"); //부모찾기
+    const thisLi = this.closest("li");
     thisLi.className = "middle-line";
     doneList.appendChild(thisLi);
+
+    const doneListLi = document.querySelector(".done__list span");
+    doneListLi.addEventListener("click",doneToTodo);
     
 }
 
@@ -43,8 +65,10 @@ const addTodo = (newTodo) => {
 
     span.addEventListener("click", doneTodo);
     deleteButton.addEventListener("click", deleteTodo);
+
 }
 
+//중복확인 메소드
 function isDuplicate(arr)  {
     const isDup = arr.some(function(x) {
       return arr.indexOf(x) !== arr.lastIndexOf(x);
@@ -65,6 +89,8 @@ const handleTodoSubmit = (event)=>{
         todos.push(newTodo);
         addTodo(newTodo);
     }
+
+    
     saveTodos();
 }
 
