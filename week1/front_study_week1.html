@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo</title>
+  <script>
+
+    function add_todo() {
+      let value = document.getElementById('add_input').value;
+      let check = 1;
+
+      let count = localStorage.getItem("todo_count");
+      if (count == null) {
+        count = 0;
+      }
+      
+      for (let i = 1; i <= count; i++) {
+        let check_value = localStorage.getItem("todo_item" + i.toString());
+        console.log(check_value);
+        if (check_value == value) {
+          alert("값 중복임!");
+          return 0;
+        }
+      }
+
+      if (value == ""){
+        alert("값 입력하삼!");
+      } else{
+        localStorage.setItem("todo_count", Number(count) + 1);
+        localStorage.setItem("todo_item" + (Number(count) + 1).toString(), value);
+  
+        location.reload();
+      }
+
+    }
+
+    function add_done_list(i) {
+      let todo_count = localStorage.getItem("todo_count");
+      let value = localStorage.getItem("todo_item" + i.toString());
+      localStorage.removeItem("todo_item" + i.toString());
+
+      let count = localStorage.getItem("done_count");
+      if (count == null) {
+        count = 0;
+      }
+
+      localStorage.setItem("done_count", Number(count) + 1);
+      localStorage.setItem("done_item" + (Number(count) + 1).toString(), value);
+
+      location.reload();
+
+    }
+    
+    function del(i) {
+      let count = localStorage.getItem("done_count");
+      localStorage.removeItem("done_item" + i.toString());
+      
+      location.reload();
+    }
+
+    function all_clear() {
+        console.log("초기화");
+        localStorage.clear();
+
+        location.reload();
+    }
+  
+    function make_item(kind, i) {
+    }
+  
+  </script>
+
+
+  <style>
+    body { text-align:center; }
+    #main_frame {
+      width: 100%;
+      background-color: white;
+      height: 100px;
+      font-size: 12px;
+    }
+    #todo_frame {
+      margin-top: 30px;
+      border: #999999 solid 1px;
+    }
+
+    #todo_list {
+      background-color: aliceblue;
+
+      width: 49.5%;
+      float: left;
+    }
+
+    .done_item {
+      text-decoration: line-through;
+    }
+
+    h4 {
+      padding-bottom: 10px;
+      border-bottom: 0.5px solid;
+    }
+
+    h5 {
+      margin-bottom: 10px;
+    }
+
+    #done_list {
+      background-color: #cccccc;
+      width: 49.5%;
+      float: right;
+    }
+
+    #input_form {
+      margin-top: 50px;
+    }
+
+    button {
+      margin-top: 5px;
+    }
+
+    li {
+      list-style: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="main_frame">
+    <h2>Todo List</h2>
+
+    <div id="input_form">
+      <h5>할 일을 입력하세요</h5>
+      <input id="add_input" placeholder="todo 입력"> <br/>
+      <button id="add_btn" onclick="add_todo()">추가</button>
+      <button id="clear_btn" onclick="all_clear()">초기화</button>
+    </div>
+    <div id="todo_frame">
+      <div id="todo_list">
+        <h4>할 일</h4>
+            <ol id="list_section">
+            </ol>
+            <script>
+
+                let count = localStorage.getItem("todo_count");
+                const list_section = document.getElementById("list_section");
+
+              for (let i = 1; i <= count; i++) {
+
+                let value = localStorage.getItem("todo_item" + i.toString());
+                
+                if(value != null) {
+                  const li = document.createElement("li");
+                  const span = document.createElement("span");
+                  span.innerText = value;
+  
+                  const deleteBtn = document.createElement("button");
+                  deleteBtn.innerText = "✔";
+                  deleteBtn.addEventListener("click", () => add_done_list(i));
+  
+                  li.appendChild(span);
+                  li.appendChild(deleteBtn);
+  
+                  list_section.appendChild(li);
+                }
+              }
+            </script>
+      </div>
+
+      <div id="done_list">
+        <h4>완료한 일</h4>
+          <ul id="do_list">
+          </ul>
+          <script>
+
+            let done_count = localStorage.getItem("done_count");
+            const done_list_section = document.getElementById("do_list");
+
+            for (let i = 1; i <= done_count; i++) {
+
+              let value = localStorage.getItem("done_item" + i.toString());
+                
+                if(value != null) {
+                  const li = document.createElement("li");
+                  const span = document.createElement("span");
+                  span.innerText = localStorage.getItem("done_item" + i.toString());
+                  span.className = "done_item";
+    
+                  const deleteBtn = document.createElement("button");
+                  deleteBtn.innerText = "x";
+                  deleteBtn.addEventListener("click", () => del(i));
+    
+                  li.appendChild(span);
+                  li.appendChild(deleteBtn);
+    
+                  done_list_section.appendChild(li);
+                }
+            }
+
+
+          </script>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
