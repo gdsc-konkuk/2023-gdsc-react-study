@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/dist/output.css" rel="stylesheet">
+  <script>
+    function addTodo(e) {
+      const todoInput = document.getElementById('todoInput');
+      if (e.key === 'Enter' && todoInput.value) {
+        const todoContainer = document.getElementById('todo');
+        const newTodo = document.createElement('div');
+        newTodo.className = 'flex mb-4 items-center';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.className = 'mr-2';
+        checkbox.addEventListener('change', function() {
+          if (this.checked) {
+            todoContainer.removeChild(newTodo);
+            document.getElementById('done').appendChild(newTodo);
+          } else {
+            document.getElementById('done').removeChild(newTodo);
+            todoContainer.appendChild(newTodo);
+          }
+        });
+
+        const todoText = document.createElement('p');
+        todoText.className = 'w-full text-gray-900';
+        todoText.textContent = todoInput.value;
+
+        newTodo.appendChild(checkbox);
+        newTodo.appendChild(todoText);
+        todoContainer.appendChild(newTodo);
+        todoInput.value = '';
+      }
+    }
+
+
+
+    function deleteThing() {
+  const div = document.getElementById('my_div');
+  
+  div.remove();
+} 
+
+
+
+  </script>
+</head>
+<body class="h-screen w-screen flex items-center justify-center font-sans" style="background: linear-gradient(to top right, rgb(222, 111, 187), rgb(230, 190, 117), rgb(232, 232, 169), rgb(153, 182, 118), rgb(104, 126, 196), rgb(172, 86, 232));">
+    <div class="bg-white rounded shadow-md p-6 m-4 w-1/2 lg:w-3/4 lg:max-w-lg">
+        <div class="mb-4">
+            <h1 class="text-gray-900">Todo List</h1>
+            <div class="flex mt-4">
+                <input type="text" id="todoInput" class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-gray-700" onkeypress="addTodo(event)" placeholder="할 일을 입력하세요">
+            </div>
+        </div>
+        <div id="todo">
+            
+            <h1 class="text-gray-900 mb-4">Todo</h1>        
+        </div>
+        <div id="done">
+            <h1 class="text-gray-900 mb-4">Done</h1>
+        </div>
+    </div>
+</body>
+</html>
