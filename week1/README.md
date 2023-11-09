@@ -22,6 +22,10 @@ __렌더링 엔진 동작과정__
 4. 렌더 트리 그리기
 > HTML (tag) Element를 JavaScript로 생성하는 방법은 어떤 것이 있고, 어떤 방법이 가장 적합할까요?
 
+  1. insertAdjacentHTML : 타겟 HTML Element의 특정 위치에 원하는 노드를 추가할 수 있다.
+  2. createElement : 지정한 tagName의 HTML Element를 생성하는 메서드이다.
+  3. Document Fragment : 브라우저에서 제공하는 인터페이스로 노드의 수정과 삭제가 가능하다.
+
 > Semantic tag에는 어떤 것이 있으며, 이를 사용하는 이유는 무엇일까요?
   - 개발자와 브라우저에게 해당 태그가 쓰인 용도를 명확하게 전달
     
@@ -72,6 +76,7 @@ __렌더링 엔진 동작과정__
 
 
 > JavaScript가 다른 언어들에 비해 주목할 만한 점에는 어떤 것들이 있나요?
+
 
 > LocalStorage는 무엇이며, TodoList에서 어떻게 활용될 수 있나요?
 
