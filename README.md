@@ -6,10 +6,12 @@ GDSC web 리액트 스터디 과제
 
 
 * DOM은 무엇인가요?
-  </br>Document Object Model로 트리구조이다 DOM 객체에 먼저 접근하고 또 키워드를 통해서 필요한 노드에 접근해서 코딩을 할 수 있다
+  </br>Document Object Model로 트리구조이다
+  </br> DOM 객체에 먼저 접근하고 또 키워드를 통해서 필요한 노드에 접근해서 코딩을 할 수 있다
+  </br>
   </br>
 * HTML (tag) Element를 JavaScript로 생성하는 방법은 어떤 것이 있고, 어떤 방법이 가장 적합할까요?  
-</br>
+  </br>
 </br>
 
 * Semantic tag에는 어떤 것이 있으며, 이를 사용하는 이유는 무엇일까요?  
