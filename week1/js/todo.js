@@ -10,12 +10,6 @@ const TODOS_KET = "TODOS"; //
 
 let todos = [];
 
-/*전체를 바꾸자'
-draw함수가 있고 새로운 변화가 생길떄마다 새로그려주는 방식으로 바꾸자
-todo/done  베열 2개
-todo->done  배열을 옮기고 그려주기
-done -> todo 
-*/
 
 const saveTodos = () => {
     localStorage.setItem(TODOS_KET, JSON.stringify(todos));

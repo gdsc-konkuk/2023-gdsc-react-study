@@ -12,11 +12,10 @@ const DONES_KEY = "DONES"
 let todos = [];
 let dones = [];
 
-/*전체를 바꾸자'
-draw함수가 있고 새로운 변화가 생길떄마다 새로그려주는 방식으로 바꾸자
+/*전체를 바꾸자
+draw함수가 있고 변화가가 생길떄마다 새로그려주는 방식으로 바꾸자
 todo/done  베열 2개
-todo->done  배열을 옮기고 그려주기
-done -> todo 
+todo->done  배열을 옮기고 draw
 */
 
 const saveTodos = () => {
@@ -60,6 +59,16 @@ function doneTodo(event){
     drawAll();
 }
 
+function doneToTodo(event){
+    event.preventDefault();
+    console.log("im doneTodo()");
+    dones = dones.filter(item => item !== this.innerText);
+    console.log(this.innerText);
+    todos.push(this.innerText);
+
+    saveTodos();
+    drawAll();
+}
 
 //todo 그리기
 const drawTodo = ()=>{
@@ -98,8 +107,12 @@ const drawDone = ()=>{
         li.appendChild(span);
         li.appendChild(deleteButton);
         ul.appendChild(li);
+
+        span.addEventListener("click",doneToTodo);
+        deleteButton.addEventListener("click",deleteTodo);
     });
-    doneList.innerHTML=ul.innerHTML;
+    doneList.innerHTML = ""; // todoList 내용을 초기화
+    doneList.appendChild(ul); // ul 요소를 추가
 
     //이벤트처리
 }
