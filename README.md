@@ -1,3 +1,15 @@
+
+
+
+
+<img width="726" alt="1" src="https://github.com/clicelee/2023-gdsc-react-study/assets/131771046/914c2883-d4f5-4001-b8b0-74fbe6acd74b">
+
+
+<img width="1470" alt="2" src="https://github.com/clicelee/2023-gdsc-react-study/assets/131771046/127575e7-aec0-4a2d-8c0d-675322299901">
+분명 이런걸 만들었는데 
+<img width="725" alt="Screenshot 2023-11-24 at 12 36 04 AM" src="https://github.com/clicelee/2023-gdsc-react-study/assets/131771046/addca093-ff34-4354-937b-1fe5f3384ff6">
+나한테 남아있는건 중간에 만들어둔 이 코드뿐..ㅠ.ㅠ
+
 # 2023-gdsc-react-study
 GDSC web 리액트 스터디 과제
 >주의! 첫 깃헙입니다
